@@ -12,14 +12,14 @@
 	
 	<h1>Accordion</h1>
 
-	<details open>
+	<details2 open>
 		<summary>
 			<h2>Koop Reynders</h2>
 		</summary>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
 		</p>
-	</details>
+	</details2>
 
 	<details>
 		<summary>
@@ -42,9 +42,13 @@
 	<script type="text/javascript">
 		
 		// Fallback for details tags:
-		// Replace with ul and li?
+		// Replace functionality with custom one build with javascript
 
-		console.log(window);
+		if (document.createElement('DETAILS').open !== undefined) {
+			console.log('supports');
+		} else {
+			console.log('does not support');
+		}
 
 	</script>
 
