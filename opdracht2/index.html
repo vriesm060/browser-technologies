@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Accordion</title>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<style type="text/css">
+		
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: inherit;
+			font-weight: inherit;
+		}
+
+		html {
+			font-family: sans-serif;
+			font-weight: 300;
+		}
+
+		body {
+			background-color: #f1f1f1;
+			font-size: 1em;
+		}
+
+		h1 {
+			font-size: 3em;
+		}
+
+		.accordion {
+			display: block;
+			width: 100%;
+			max-width: 30em;
+			padding: 1.5em;
+			margin: 0 auto;
+		}
+
+		.person {
+			display: block;
+			width: 100%;
+			margin: 1.5em auto;
+			background-color: #fff;
+		}
+
+		.summary {
+			display: block;
+			height: 1.5em;
+			padding: 1.5em;
+		}
+		.summary::-webkit-details-marker {
+			display: none;
+		}
+		.summary.close + * {
+			display: none;
+		}
+
+		.summary > h2 {
+			display: inline-block;
+			height: 100%;
+			font-size: 1.5em;
+			line-height: 1;
+		}
+
+		.summary > button {
+			float: right;
+			width: 1.5em;
+			height: 100%;
+			padding: .25em;
+			border: 0;
+			border-radius: 50%;
+			color: #fff;
+			background-color: steelblue;
+			font-size: 1em;
+			line-height: 1;
+			transition: all .3s ease-in-out;
+		}
+		.person.open button {
+			transform: rotate(180deg);
+		}
+
+		.person p {
+			padding: 1.5em;
+			line-height: 1.4;
+		}
+
+	</style>
+</head>
+<body>
+
+	<section class="accordion">
+		<h1>Accordion</h1>
+
+		<!-- <div class="person">
+			<div class="summary">
+				<h2>Naam</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</div>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</div> -->
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Koop Reynders</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Krijn Hoetmer</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Joost Faber</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+	</section>
+
+	<!-- <script type="text/javascript" src="script.js"></script> -->
+
+	<script type="text/javascript">
+		
+		// Fallback for details tags:
+		// Replace functionality with custom one build with javascript
+
+		if (document.createElement('details').open === undefined) {
+			console.log('does not support');
+
+			var accordion = {
+				person: document.getElementsByClassName('person'),
+				summary: document.getElementsByClassName('summary'),
+				init: function () {
+					for (var i = 0; i < this.summary.length; i++) {
+						this.summary[i].className += ' close';
+					}
+				},
+				openAccordion: function (summary) {
+					summary.className = summary.className.slice(0, summary.className.indexOf(' close'));
+				},
+				closeAccordion: function (summary) {
+					summary.className += ' close';
+				}
+			};
+
+			accordion.init();
+
+			for (var i = 0; i < accordion.summary.length; i++) {
+				accordion.summary[i].addEventListener('click', function () {
+					if (this.className.indexOf('close') !== -1) {
+						accordion.openAccordion(this);
+					} else {
+						accordion.closeAccordion(this);
+					}
+				}, false);
+			}
+		}
+
+
+
+
+		// Details tags exists:
+
+		// function accordion() {
+		// 	var summaries = document.querySelectorAll('.summary');
+
+		// 	summaries.forEach(function (summary) {
+		// 		summary.addEventListener('click', function () {
+		// 			if (this.parentNode.classList.contains('open')) {
+		// 				this.parentNode.classList.remove('open');
+		// 			} else {
+		// 				this.parentNode.classList.add('open');
+		// 			}
+		// 		}, false);
+		// 	});
+		// }
+		// accordion();
+		
+	</script>
+
+</body>
+</html>
