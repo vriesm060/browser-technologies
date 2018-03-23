@@ -1,66 +1,65 @@
 
-// Fallback for details tags:
-// Replace functionality with custom one build with javascript
+// If JS is enabled AND
+// If setInterval() is supported:
 
-var person = document.getElementsByClassName('person');
-var summary = document.getElementsByClassName('summary');
+if (window.setInterval !== undefined) {
+	console.log('does exist');
 
-if (document.createElement('details').open === undefined) {
-	console.log('does not support');
+	var carrousel = document.getElementsByClassName('carrousel')[0];
+	var prevBtn = document.getElementsByClassName('prev-btn')[0];
+	var nextBtn = document.getElementsByClassName('next-btn')[0];
 
-	var accordion = {
-		person: person,
-		summary: summary,
-		init: function () {
-			for (var i = 0; i < this.summary.length; i++) {
-				this.summary[i].className += ' close';
-			}
-		},
-		openAccordion: function (summary) {
-			summary.className = summary.className.slice(0, summary.className.indexOf(' close'));
-		},
-		closeAccordion: function (summary) {
-			summary.className += ' close';
+	// Make the carrousel inline:
+	carrousel.className += ' inline';
+	prevBtn.className += ' inline';
+	nextBtn.className += ' inline';
+
+	function slider() {
+
+		var carrouselContainer = document.getElementsByClassName('carrousel--container')[0];
+		var slide = carrouselContainer.children;
+
+		var idx = 0;
+
+		function start(idx) {
+			carrouselContainer.style.left = (idx * -100) + '%';
 		}
-	};
+		start(idx);
 
-	accordion.init();
+		setInterval(function () {
 
-	for (var i = 0; i < accordion.summary.length; i++) {
-		accordion.summary[i].addEventListener('click', function () {
-			if (this.className.indexOf('close') !== -1) {
-				accordion.openAccordion(this);
+			if (idx === slide.length - 1) {
+				idx = 0;
 			} else {
-				accordion.closeAccordion(this);
+				idx++;
 			}
+			start(idx);
+
+		}, 5000)
+
+		prevBtn.addEventListener('click', function (e) {
+			if (idx === 0) {
+				idx = slide.length -1;
+			} else {
+				idx--;
+			}
+			start(idx);
+			e.preventDefault();
 		}, false);
+
+		nextBtn.addEventListener('click', function (e) {
+			if (idx === slide.length - 1) {
+				idx = 0;
+			} else {
+				idx++;
+			}
+			start(idx);
+			e.preventDefault();
+		}, false);
+
 	}
-}
+	slider();
 
-for (var i = 0; i < summary.length; i++) {
-	summary[i].addEventListener('click', function () {
-
-		var button = this.getElementsByTagName('button')[0];
-
-		if (window.getComputedStyle(button).getPropertyValue('transform') === undefined) {
-			console.log('does not exist');
-
-			if (button.innerHTML === '&vee;') {
-				button.innerHTML = '&wedge;';
-			} else {
-				button.innerHTML = '&vee;';
-			}
-
-		} else {
-			console.log('does exist');
-				
-			if (button.classList.contains('open')) {
-				button.classList.remove('open');
-			} else {
-				button.classList.add('open');
-			}
-
-		}
-
-	}, false);
+} else {
+	console.log('does not exist');
 }
