@@ -1,4 +1,5 @@
 * {
+	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: inherit;
@@ -8,6 +9,7 @@
 html {
 	font-family: sans-serif;
 	font-weight: 300;
+	line-height: 1.4;
 }
 
 body {
@@ -19,59 +21,62 @@ h1 {
 	font-size: 3em;
 }
 
-.accordion {
+.carrousel {
 	display: block;
+	overflow: hidden;
 	width: 100%;
-	max-width: 30em;
-	padding: 1.5em;
+	max-width: 40em;
 	margin: 0 auto;
 }
 
-.person {
+button {
+	display: none;
+	padding: 1.5em;
+	border: 0;
+	margin: 0;
+	color: #fff;
+	background-color: #1c1c1c;
+}
+button.inline {
+	display: block;
+}
+
+.prev-btn {
+	float: left;
+}
+
+.next-btn {
+	float: right;
+}
+
+.carrousel--container {
+	position: relative;
+	left: 0;
+	display: block;
+	width: 100%;
+	transition: all 1s ease-in-out;
+}
+.carrousel.inline .carrousel--container {
+	width: 400%;
+}
+
+.carrousel li {
 	display: block;
 	width: 100%;
 	margin: 1.5em auto;
+}
+.carrousel.inline li {
+	display: inline-block;
+	width: 25%;
+}
+
+.carrousel article {
+	display: block;
+	width: 100%;
+	padding: 1.5em;
 	background-color: #fff;
 }
 
-.summary {
-	display: block;
-	height: 1.5em;
-	padding: 1.5em;
-}
-.summary::-webkit-details-marker {
-	display: none;
-}
-.summary.close + * {
-	display: none;
-}
-
-.summary > h2 {
-	display: inline-block;
-	height: 100%;
-	font-size: 1.5em;
-	line-height: 1;
-}
-
-.summary > button {
-	float: right;
-	width: 1.5em;
-	height: 100%;
-	padding: .25em;
-	border: 0;
-	border-radius: 50%;
-	color: #fff;
-	background-color: steelblue;
-	font-size: 1em;
-	line-height: 1;
-	transform: rotate(0deg);
-	transition: all .3s ease-in-out;
-}
-.summary > button.open {
-	transform: rotate(180deg);
-}
-
-.person p {
-	padding: 1.5em;
-	line-height: 1.4;
+.carrousel article p {
+	margin: 1.5em auto;
 }
