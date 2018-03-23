@@ -1,0 +1,77 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	font-weight: inherit;
+}
+
+html {
+	font-family: sans-serif;
+	font-weight: 300;
+}
+
+body {
+	background-color: #f1f1f1;
+	font-size: 1em;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+.accordion {
+	display: block;
+	width: 100%;
+	max-width: 30em;
+	padding: 1.5em;
+	margin: 0 auto;
+}
+
+.person {
+	display: block;
+	width: 100%;
+	margin: 1.5em auto;
+	background-color: #fff;
+}
+
+.summary {
+	display: block;
+	height: 1.5em;
+	padding: 1.5em;
+}
+.summary::-webkit-details-marker {
+	display: none;
+}
+.summary.close + * {
+	display: none;
+}
+
+.summary > h2 {
+	display: inline-block;
+	height: 100%;
+	font-size: 1.5em;
+	line-height: 1;
+}
+
+.summary > button {
+	float: right;
+	width: 1.5em;
+	height: 100%;
+	padding: .25em;
+	border: 0;
+	border-radius: 50%;
+	color: #fff;
+	background-color: steelblue;
+	font-size: 1em;
+	line-height: 1;
+	transform: rotate(0deg);
+	transition: all .3s ease-in-out;
+}
+.summary > button.open {
+	transform: rotate(180deg);
+}
+
+.person p {
+	padding: 1.5em;
+	line-height: 1.4;
+}
