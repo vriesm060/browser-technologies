@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Accordion</title>
+	<style type="text/css">
+		
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: inherit;
+			font-weight: inherit;
+		}
+
+		html {
+			font-family: sans-serif;
+			font-weight: 300;
+		}
+
+		body {
+			background-color: #f1f1f1;
+			font-size: 1em;
+		}
+
+		h1 {
+			font-size: 3em;
+		}
+
+		.accordion {
+			display: block;
+			width: 100%;
+			max-width: 30em;
+			padding: 1.5em;
+			margin: 0 auto;
+		}
+
+		.person {
+			display: block;
+			width: 100%;
+			margin: 1.5em auto;
+			background-color: #fff;
+		}
+
+		.summary {
+			display: block;
+			height: 1.5em;
+			padding: 1.5em;
+		}
+		.summary::-webkit-details-marker {
+			display: none;
+		}
+		.summary.close + * {
+			display: none;
+		}
+
+		.summary > h2 {
+			display: inline-block;
+			height: 100%;
+			font-size: 1.5em;
+			line-height: 1;
+		}
+
+		.summary > button {
+			float: right;
+			width: 1.5em;
+			height: 100%;
+			padding: .25em;
+			border: 0;
+			border-radius: 50%;
+			color: #fff;
+			background-color: steelblue;
+			font-size: 1em;
+			line-height: 1;
+			transform: rotate(0deg);
+			transition: all .3s ease-in-out;
+		}
+		.summary > button.open {
+			transform: rotate(180deg);
+		}
+
+		.person p {
+			padding: 1.5em;
+			line-height: 1.4;
+		}
+
+	</style>
+</head>
+<body>
+
+	<section class="accordion">
+		<h1>Accordion</h1>
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Koop Reynders</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Krijn Hoetmer</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+
+		<details class="person">
+			<summary class="summary">
+				<h2>Joost Faber</h2>
+				<button type="button" area-label="details-marker">
+					&vee;
+				</button>
+			</summary>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
+			</p>
+		</details>
+	</section>
+
+	<script type="text/javascript">
+
+		// Fallback for details tags:
+		// Replace functionality with custom one build with javascript
+
+		var person = document.getElementsByClassName('person');
+		var summary = document.getElementsByClassName('summary');
+
+		if (document.createElement('details').open === undefined) {
+			console.log('does not support');
+
+			var accordion = {
+				person: person,
+				summary: summary,
+				init: function () {
+					for (var i = 0; i < this.summary.length; i++) {
+						this.summary[i].className += ' close';
+					}
+				},
+				openAccordion: function (summary) {
+					summary.className = summary.className.slice(0, summary.className.indexOf(' close'));
+				},
+				closeAccordion: function (summary) {
+					summary.className += ' close';
+				}
+			};
+
+			accordion.init();
+
+			for (var i = 0; i < accordion.summary.length; i++) {
+				accordion.summary[i].addEventListener('click', function () {
+					if (this.className.indexOf('close') !== -1) {
+						accordion.openAccordion(this);
+					} else {
+						accordion.closeAccordion(this);
+					}
+				}, false);
+			}
+		}
+
+		// Fallback for when CSS transform property is not supported:
+		for (var i = 0; i < summary.length; i++) {
+			summary[i].addEventListener('click', function () {
+
+				var button = this.getElementsByTagName('button')[0];
+
+				if (window.getComputedStyle(button).getPropertyValue('transform') === undefined) {
+					console.log('does not exist');
+
+					if (button.innerHTML === '&vee;') {
+						button.innerHTML = '&wedge;';
+					} else {
+						button.innerHTML = '&vee;';
+					}
+
+				} else {
+					console.log('does exist');
+						
+					if (button.classList.contains('open')) {
+						button.classList.remove('open');
+					} else {
+						button.classList.add('open');
+					}
+
+				}
+
+			}, false);
+		}
+
+	</script>
+</body>
+</html>
