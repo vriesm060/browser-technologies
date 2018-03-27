@@ -4,8 +4,6 @@
 
 (function () {
 
-  var storage = [];
-
   var app = {
     init: function () {
       // addItem.submit.el.addEventListener('click', function (e) {
