@@ -1,0 +1,220 @@
+
+:root {
+	/* Colors: */
+	--primary-color: #20B567;
+	--highlight-color: #2BF58C;
+	--dark-color: #0E4F2D;
+	--black-color: #051C10;
+	--red-color: #F5402B;
+
+	/* Spacing: */
+	--spacing-unit: 1.5rem;
+}
+
+/*
+====================
+		General
+====================
+*/
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+html {
+	color: var(--black-color);
+	font-family: 'montserrat', arial, helvetica, sans-serif;
+	font-size: 1em;
+	font-weight: 300;
+}
+
+body {
+	background-color: #F1F1F1;
+}
+
+/*
+====================
+		Add items
+====================
+*/
+
+.add-item {
+	display: block;
+	width: 100%;
+	padding: var(--spacing-unit);
+	background-color: var(--highlight-color);
+}
+
+.add-item h1 {
+	width: 100%;
+	max-width: 40rem;
+	padding: var(--spacing-unit);
+	margin: 0 auto;
+	font-size: 1.5em;
+}
+@media all and (min-width: 30rem) {
+	.add-item h1 {
+		font-size: 2em;
+	}
+}
+
+.add-item form {
+	display: block;
+	width: 100%;
+	max-width: 40rem;
+	padding: var(--spacing-unit);
+	margin: 0 auto;
+}
+
+.add-item form label {
+	display: block;
+	width: 100%;
+	margin-bottom: var(--spacing-unit);
+	font-size: 1.5em;
+	font-weight: 500;
+}
+
+.add-item form > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.add-item form input {
+	flex: 1 0 auto;
+	display: block;
+	width: calc(100% - 4rem);
+	height: 4.375rem;
+	padding: calc((4.375rem - 1.5em) / 2);
+	padding-left: 0;
+	border: 0;
+	border-bottom: .125rem solid var(--black-color);
+	border-radius: 0;
+	outline: 0;
+	background-color: transparent;
+}
+.add-item form input::-webkit-input-placeholder {
+	color: var(--primary-color);
+}
+
+.add-item form [type='submit'] {
+	flex: 0 0 auto;
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: .5rem;
+	border: 0;
+	border-radius: 50%;
+	outline: 0;
+	margin-left: var(--spacing-unit);
+	color: var(--highlight-color);
+	background-color: var(--black-color);
+	font-size: 1.5em;
+	font-weight: 500;
+	line-height: 1;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+.add-item form [type='submit']:hover,
+.add-item form [type='submit']:active,
+.add-item form [type='submit']:focus {
+	background-color: #FFF;
+}
+
+/*
+====================
+		Main
+====================
+*/
+
+main {
+	display: block;
+	width: 100%;
+}
+
+main ul {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	width: 100%;
+	max-width: 43rem;
+	padding: calc(var(--spacing-unit) / 2);
+	margin: 0 auto;
+}
+
+main li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 4.375rem;
+	margin: calc(var(--spacing-unit) / 2);
+	background-color: #FFF;
+}
+
+main li span {
+	flex: 1 0 auto;
+	display: block;
+	height: 100%;
+	padding-left: var(--spacing-unit);
+	padding-right: var(--spacing-unit);
+	padding-top: calc((4.375rem - 1.5em) / 2);
+	padding-bottom: calc((4.375rem - 1.5em) / 2);
+	font-size: 1.5em;
+	line-height: 1.4;
+}
+
+main li button {
+	flex: 0 0 auto;
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: .75rem;
+	border: 0;
+	border-radius: 50%;
+	outline: 0;
+	margin: auto var(--spacing-unit);
+	background-color: var(--black-color);
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+main li button:hover,
+main li button:active,
+main li button:focus {
+	background-color: var(--red-color);
+}
+
+main li button > svg {
+	width: auto;
+	height: 1rem;
+	fill: #FFF;
+}
+
+/*
+====================
+		Drag & Drop
+====================
+*/
+
+.drag-drop-area {
+	display: block;
+	align-items: center;
+	width: 100%;
+	min-height: 200px;
+	padding: var(--spacing-unit);
+	background-color: var(--dark-color);
+}
+
+.drag-drop-area h1 {
+	display: block;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0 auto;
+	color: #FFF;
+	font-size: 1.5em;
+	text-align: center;
+}
