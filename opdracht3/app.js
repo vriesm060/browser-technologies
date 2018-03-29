@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 var storage = [];
-var dragDropStorage = [];
 
 // Render the home page:
 app.get('/', function (req, res) {
@@ -33,7 +32,6 @@ app.get('/', function (req, res) {
 
 app.post('/delete', function (req, res) {
 	var id = Number(req.body.delete);
-	console.log(id);
 	storage.forEach(function (item, i, self) {
 		if (item.id === id) {
 			self.splice(i, 1);

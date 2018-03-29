@@ -10,47 +10,20 @@
 		<form action="/" method="post">
 			<label for="list-item">Voeg een item toe</label>
 			<div>
-				<input id="list-item" type="text" name="listItem" value="" autofocus autocomplete="off" placeholder="Bijv. Kaas">
-				<button type="submit" name="submitList" area-label="Voeg toe">+</button>
+				<input id="list-item" type="text" name="listItem" value="Kaas" autocomplete="off" autofocus>
+				<button type="submit" name="submitList" aria-label="Voeg item toe">+</button>
 			</div>
 		</form>
 	</header>
 
 	<main>
-		<!-- <div class="drag-drop-area">
-			<h1>Verplaats naar...</h1>
-			<form class="category-selection" action="/category" method="post">
-				<ol>
-					<li>
-						<input id="cat1" type="radio" name="category" value="vegetables">
-						<label for="cat1">Groente</label>
-					</li>
-					<li>
-						<input id="cat2" type="radio" name="category" value="fruit">
-						<label for="cat2">Fruit</label>
-					</li>
-					<li>
-						<input id="cat3" type="radio" name="category" value="grains">
-						<label for="cat3">Granen</label>
-					</li>
-					<li>
-						<input id="cat4" type="radio" name="category" value="meat">
-						<label for="cat4">Vlees</label>
-					</li>
-					<li>
-						<input id="cat5" type="radio" name="category" value="dairy">
-						<label for="cat5">Zuivel</label>
-					</li>
-				</ol>
-			</form>
-		</div> -->
 		<ul>
 			<% for (i = 0; i < list.length; i++) { %>
-				<li id="<%= list[i].id %>" draggable="true">
+				<li id="<%= list[i].id %>" draggable="true" title="<%= list[i].item %>">
 					<span><%= list[i].item %></span>
 					<form action="/delete" method="post">
-						<button type="submit" name="delete" value="<%= list[i].id %>" area-label="Verwijderen">
-							<svg viewBox="0 0 268.5 268.5">
+						<button type="submit" name="delete" value="<%= list[i].id %>" aria-label="Verwijder dit item">
+							<svg width="40px" height="40px" viewBox="0 0 268.5 268.5">
 								<path d="M63.1,250.3c0,0,4,18.2,24.6,18.2h93.1c20.6,0,24.6-18.2,24.6-18.2l18.4-178.7h-179L63.1,250.3z M170,98.4
 								c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9L179,232.7c0,4.9-4,8.9-8.9,8.9s-8.9-4-8.9-8.9L170,98.4z M125.3,98.4
 								c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9v134.2c0,4.9-4,8.9-8.9,8.9c-4.9,0-8.9-4-8.9-8.9C125.3,232.7,125.3,98.4,125.3,98.4z
@@ -64,8 +37,8 @@
 				</li>
 			<% } %>
 		</ul>
-		<div class="drag-drop-area">
-		</div>
+		<form class="dropzone" action="/delete" method="post">
+		</form>
 	</main>
 
 	<script type="text/javascript" src="/js/script.js"></script>

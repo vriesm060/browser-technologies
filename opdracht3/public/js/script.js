@@ -1,130 +1,137 @@
 'use strict';
 
-// Client Side:
-
 (function () {
 
   var app = {
     init: function () {
-      // addItem.submit.el.addEventListener('click', function (e) {
-      //   addItem.getInputValue();
-      //   e.preventDefault();
-      // }, false);
-
-      dragDrop.areas.forEach(function (area) {
-        area.addEventListener('drop', function (e) {
-          dragDrop.drop(e);
-        }, false);
-        area.addEventListener('dragover', function (e) {
-          dragDrop.allowDrop(e);
-        }, false);
-      });
-
-      dragDrop.items.forEach(function (item) {
-        item.addEventListener('dragstart', function (e) {
-          dragDrop.drag(e);
-          dragDrop.deleteItem(this);
-        }, false);
-      });
+      this.createPlaceholder();
+      dragDrop.init();
+    },
+    createPlaceholder: function () {
+      // Placeholder detection:
+      if (document.createElement('input').placeholder !== undefined) {
+        var input = document.getElementsByTagName('input');
+        for (var i = 0; i < input.length; i++) {
+          input[i].setAttribute('placeholder', 'Bijv. ' + input[i].value);
+          input[i].value = '';
+        }
+      }
     }
   };
 
   var dragDrop = {
-    areas: document.querySelectorAll('.drag-drop-area'),
-    items: document.querySelectorAll('main ul li'),
-    allowDrop: function (e) {
-      e.preventDefault();
+    dropzone: function () {
+      if (document.querySelector('.dropzone') !== undefined) {
+        return document.querySelector('.dropzone');
+      } else {
+        var form = document.getElementsByTagName('form');
+        for (var i = 0; i < form.length; i++) {
+          if (form[i].getAttribute('class') === 'dropzone') {
+            return form[i];
+          }
+        }
+      }
+    },
+    items: function () {
+      if (document.querySelectorAll('main ul li') !== undefined) {
+        return document.querySelectorAll('main ul li');
+      } else {
+        return document.getElementsByTagName('main')[0].children[0].children;
+      }
+    },
+    init: function () {
+      if (('draggable' in document.createElement('li')) && document.addEventListener) {
+        var self = this;
+
+        this.createDropzone();
+
+        for (var i = 0; i < this.items().length; i++) {
+          if ('classList' in document.body) {
+            this.items()[i].classList.add('draggable');
+          } else {
+            this.items()[i].className += ' draggable';
+          }
+
+          this.items()[i].addEventListener('dragstart', function (e) {
+            self.dragStart(e);
+          }, false);
+
+          this.items()[i].addEventListener('dragend', function (e) {
+            if ('classList' in document.body) {
+              self.dropzone().classList.remove('show');
+            } else {
+              self.dropzone().className.slice(' show');
+            }
+          }, false);
+        }
+
+        this.dropzone().addEventListener('dragover', function (e) {
+          self.drag(e);
+        }, false);
+
+        this.dropzone().addEventListener('drop', function (e) {
+          self.drop(e);
+        }, false);
+      }
+    },
+    createDropzone: function () {
+      var div = document.createElement('div');
+      var h1 = document.createElement('h1');
+      var radio = document.createElement('input');
+
+      radio.setAttribute('type', 'radio');
+      radio.setAttribute('name', 'delete');
+      radio.setAttribute('disabled', 'true');
+      this.dropzone().appendChild(radio);
+
+      this.dropzone().appendChild(div);
+
+      if ('textContent' in document.body) {
+        h1.textContent = 'Verwijderen';
+      } else {
+        h1.innerHTML = 'Verwijderen';
+      }
+
+      div.appendChild(h1);
+    },
+    dragStart: function (e) {
+      if ('classList' in document.body) {
+        this.dropzone().classList.add('show');
+      } else {
+        this.dropzone().className += ' show';
+      }
+
+      e.dataTransfer.setData('text', e.target.id);
     },
     drag: function (e) {
-      e.dataTransfer.setData('text', e.target.id);
+      e.dataTransfer.dropEffect = 'move';
+      e.preventDefault();
     },
     drop: function (e) {
       var data = e.dataTransfer.getData('text');
-      e.target.appendChild(document.getElementById(data));
-      console.log('dropped');
+      var item = document.getElementById(data);
+      e.target.appendChild(item);
+      this.remove(item);
       e.preventDefault();
     },
-    deleteItem: function (item) {
-      console.log(item);
+    remove: function (item) {
+      var self = this;
+      var radio = this.dropzone().children[0];
+      radio.value = item.id;
+      radio.disabled = false;
+      radio.checked = true;
 
-      var form = item.querySelector('form');
-      form.submit();
+      if ('classList' in document.body) {
+        this.dropzone().classList.remove('show');
+      } else {
+        this.dropzone().className.slice(' show');
+      }
+
+      setTimeout(function () {
+        self.dropzone().submit();
+      }, 300);
     }
   };
-
-  // var addItem = {
-  //   input: {
-  //     el: document.querySelector('.add-item form input')
-  //   },
-  //   submit: {
-  //     el: document.querySelector('.add-item form [type="submit"]')
-  //   },
-  //   getInputValue: function () {
-  //     var val = this.input.el.value;
-  //     console.log(val);
-  //
-  //     if (/([a-zA-Z0-9])/.test(val)) {
-  //       var item = {
-  //         id: new Date().getTime(),
-  //         item: val
-  //       };
-  //       storage.unshift(item);
-  //       items.addNewItem();
-  //     }
-  //   }
-  // };
-  //
-  // var items = {
-  //   list: {
-  //     el: document.querySelector('main ul')
-  //   },
-  //   addNewItem: function () {
-  //     console.log(storage);
-  //
-  //     var self = this;
-  //
-  //     storage.forEach(function (item) {
-  //       var li = document.createElement('li');
-  //       var span = document.createElement('span');
-  //       var form = document.createElement('form');
-  //       var button = document.createElement('button');
-  //       var svg = document.createElement('svg');
-  //       var path = document.createElement('path');
-  //
-  //       self.list.el.appendChild(li);
-  //
-  //       span.textContent = item.item;
-  //       li.appendChild(span);
-  //
-  //       form.action = '/delete';
-  //       form.method = 'post';
-  //       li.appendChild(form);
-  //
-  //       button.type = 'submit';
-  //       button.name = 'delete';
-  //       button.value = item.id;
-  //       button.areaLabel = 'Verwijderen';
-  //       form.appendChild(button);
-  //
-  //       svg.setAttribute('viewBox', '0 0 268.5 268.5');
-  //       button.appendChild(svg);
-  //
-  //       var d = `
-  //       M63.1,250.3c0,0,4,18.2,24.6,18.2h93.1c20.6,0,24.6-18.2,24.6-18.2l18.4-178.7h-179L63.1,250.3z M170,98.4
-  //       c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9L179,232.7c0,4.9-4,8.9-8.9,8.9s-8.9-4-8.9-8.9L170,98.4z M125.3,98.4
-  //       c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9v134.2c0,4.9-4,8.9-8.9,8.9c-4.9,0-8.9-4-8.9-8.9C125.3,232.7,125.3,98.4,125.3,98.4z
-  //       M89.5,89.5c4.9,0,8.9,4,8.9,8.9l8.9,134.2c0,4.9-4,8.9-8.9,8.9c-4.9,0-8.9-4-8.9-8.9L80.5,98.4C80.5,93.5,84.6,89.5,89.5,89.5z
-  //       M218.4,35.8H179V17.9C179,4.3,174.6,0,161.1,0h-53.7C95,0,89.5,6,89.5,17.9v17.9H50.1c-7.9,0-14.3,6-14.3,13.4
-  //       c0,7.4,6.4,13.4,14.3,13.4h168.2c7.9,0,14.3-6,14.3-13.4C232.7,41.8,226.3,35.8,218.4,35.8z M161.1,35.8h-53.7l0-17.9h53.7
-  //       L161.1,35.8L161.1,35.8z
-  //       `;
-  //
-  //       path.setAttribute('fill', '#FFFFFF');
-  //       path.setAttribute('d', d);
-  //       svg.appendChild(path);
-  //     });
-  //   }
-  // };
 
   app.init();
 
