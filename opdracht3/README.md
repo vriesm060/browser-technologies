@@ -1,7 +1,5 @@
 # Boodschappenlijst App
 
-[Demo](http://068306a8.ngrok.io/)
-
 ## Core functionaliteit
 
 De core functionaliteit van deze app is het maken van een boodschappenlijst, waarbij je een item kan maken en deze kan verwijderen. Daarnaast is het belangrijk dat de boodschappenlijst bewaard blijft wanneer de browser afgesloten is.
