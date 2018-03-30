@@ -2,8 +2,6 @@
 
 ## Core functionaliteit
 
-test
-
 De core functionaliteit van deze app is het maken van een boodschappenlijst, waarbij je een item kan maken en deze kan verwijderen. Daarnaast is het belangrijk dat de boodschappenlijst bewaard blijft wanneer de browser afgesloten is.
 
 De core functionaliteit is server side opgebouwd. Extra features zijn client side gemaakt. Deze hebben feature detection en fallback voor browsers die de nieuwe features niet ondersteunen.
@@ -24,4 +22,4 @@ Ik heb de app op verschillende b
 
 ## Accessibility
 
-Om de accessibility te testen heb ik [Funkify](http://www.funkify.org/) gebruikt en de standaard Voice Over van Mac. Ook heb ik een audit gedaan met de Chrome Dev Tools die 100% accessibility terug gaf. De app werkt ook met gebruik van toetsenbord.
+Om de accessibility te testen heb ik [Funkify](http://www.funkify.org/) gebruikt en de standaard Voice Over van Mac. Ook heb ik een audit gedaan met de Chrome Dev Tools die 100% accessibility terug gaf. De app werkt ook met gebruik van toetsenbord.  
