@@ -2,6 +2,8 @@
 
 ## Core functionaliteit
 
+test
+
 De core functionaliteit van deze app is het maken van een boodschappenlijst, waarbij je een item kan maken en deze kan verwijderen. Daarnaast is het belangrijk dat de boodschappenlijst bewaard blijft wanneer de browser afgesloten is.
 
 De core functionaliteit is server side opgebouwd. Extra features zijn client side gemaakt. Deze hebben feature detection en fallback voor browsers die de nieuwe features niet ondersteunen.
