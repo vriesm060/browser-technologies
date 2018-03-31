@@ -1,6 +1,6 @@
 # Boodschappenlijst App :pizza:
 
-<img src="screenshots/preview.png" alt="preview" style="width: 100%; max-width: 400px;">  
+<img src="screenshots/preview.png" alt="preview" width="400px">  
 
 Met deze app kan je een boodschappenlijst aanmaken door producten in te voeren via het invoerveld. Producten kunnen later ook weer verwijderd worden. De boodschappenlijst blijft bewaard wanneer de browser afgesloten is.
 
@@ -84,7 +84,7 @@ app.post('/delete', function (req, res) {
 #### Drag en Drop
 ---
 
-<img src="screenshots/drag-and-drop.png" alt="drag and drop" style="width: 100%; max-width: 400px;">  
+<img src="screenshots/drag-and-drop.png" alt="drag and drop" width="400px">  
 
 Als enhancement heeft de app een Drag en Drop functionaliteit. Wanneer dit wordt ondersteund, kan je via Drag en Drop producten uit de lijst verwijderen, naast de standaard manier.
 
@@ -101,15 +101,15 @@ if (('draggable' in document.createElement('li')) && document.addEventListener) 
 
 Om de accessibility te testen heb ik [Funkify](http://www.funkify.org/) gebruikt en de standaard Voice Over van Mac. Ook heb ik een audit gedaan met de Chrome Dev Tools die 100% accessibility terug gaf. De app werkt ook met gebruik van toetsenbord.
 
-<img src="screenshots/audit-results.png" alt="audit results" style="width: 100%; max-width: 400px;">  
+<img src="screenshots/audit-results.png" alt="audit results" width="400px">  
 *Resultaten van de Audit*
 
-<img src="screenshots/audit-accessibility.png" alt="audit accessibility" style="width: 100%; max-width: 400px;">  
+<img src="screenshots/audit-accessibility.png" alt="audit accessibility" width="400px">  
 *Accessibility resultaten van de Audit*
 
 ## Browser ondersteuning
 
 Drag & Drop wordt door maar 50% van de browsers ondersteund, maar de core functionaliteit wordt door bijna alle browsers ondersteund. Alleen op browsers die geen HTML5 elementen ondersteunen, IE6, IE7, IE8 en Firefox 2, ziet de app er minder goed uit. Dit komt doordat het grootste gedeelte van de styling dan niet gevonden wordt. Ondanks dit is de belangrijkste informatie nog wel beschikbaar.
 
-<img src="screenshots/ie8-preview.png" alt="IE8 preview" style="width: 100%; max-width: 400px;">  
+<img src="screenshots/ie8-preview.png" alt="IE8 preview" width="400px">  
 *De app op IE8*
