@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Accordion</title>
 	<style type="text/css">
-		
+
 		* {
 			padding: 0;
 			margin: 0;
@@ -61,7 +61,7 @@
 			line-height: 1;
 		}
 
-		.summary > button {
+		.details-marker {
 			float: right;
 			width: 1.5em;
 			height: 100%;
@@ -75,7 +75,7 @@
 			transform: rotate(0deg);
 			transition: all .3s ease-in-out;
 		}
-		.summary > button.open {
+		.details-marker.open {
 			transform: rotate(180deg);
 		}
 
@@ -94,9 +94,9 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Koop Reynders</h2>
-				<button type="button" area-label="details-marker">
+				<span class="details-marker" aria-label="details-marker">
 					&vee;
-				</button>
+				</span>
 			</summary>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
@@ -106,7 +106,7 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Krijn Hoetmer</h2>
-				<button type="button" area-label="details-marker">
+				<button class="details-marker" type="button" aria-label="details-marker">
 					&vee;
 				</button>
 			</summary>
@@ -118,7 +118,7 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Joost Faber</h2>
-				<button type="button" area-label="details-marker">
+				<button class="details-marker" type="button" aria-label="details-marker">
 					&vee;
 				</button>
 			</summary>
@@ -185,7 +185,7 @@
 
 				} else {
 					console.log('does exist');
-						
+
 					if (button.classList.contains('open')) {
 						button.classList.remove('open');
 					} else {
