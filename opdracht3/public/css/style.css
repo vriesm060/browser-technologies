@@ -197,8 +197,8 @@ main li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 70px;
-	height: 4.375rem;
+	min-height: 70px;
+	min-height: 4.375rem;
 	margin: 12px;
 	margin: .75rem;
 	margin: calc(var(--spacing-unit) / 2);
@@ -249,7 +249,8 @@ main li button:focus {
 */
 
 .dropzone {
-	position: absolute;
+	position: fixed;
+	z-index: -2;
 	left: 0;
 	bottom: 0;
 	display: block;
@@ -264,6 +265,7 @@ main li button:focus {
 	transition: all .3s ease-in-out;
 }
 .dropzone.show {
+	z-index: 2;
 	opacity: 1;
 	pointer-events: auto;
 }
