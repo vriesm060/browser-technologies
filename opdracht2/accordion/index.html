@@ -4,22 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>Accordion</title>
+	<script type="text/javascript">
+		document.createElement('section');
+		document.createElement('details');
+		document.createElement('summary');
+	</script>
 	<style type="text/css">
 
 		* {
+			box-sizing: border-box;
 			padding: 0;
 			margin: 0;
 			font-family: inherit;
 			font-weight: inherit;
 		}
 
-		html {
+		body {
+			background-color: #F1F1F1;
 			font-family: sans-serif;
 			font-weight: 300;
-		}
-
-		body {
-			background-color: #f1f1f1;
 			font-size: 1em;
 		}
 
@@ -30,48 +33,58 @@
 		.accordion {
 			display: block;
 			width: 100%;
-			max-width: 30em;
-			padding: 1.5em;
+			max-width: 35em;
+			padding: 24px;
+			padding: 1.5rem;
 			margin: 0 auto;
 		}
 
 		.person {
 			display: block;
 			width: 100%;
-			margin: 1.5em auto;
-			background-color: #fff;
+			margin: 24px auto;
+			margin: 1.5rem auto;
+			background-color: #FFF;
 		}
 
 		.summary {
 			display: block;
-			height: 1.5em;
-			padding: 1.5em;
+			display: flex;
+			width: 100%;
+			min-height: 72px;
+			min-height: 4.5rem;
+			padding: 24px;
+			padding: 1.5rem;
+			cursor: pointer;
 		}
-		.summary::-webkit-details-marker {
-			display: none;
-		}
+		.summary::-webkit-details-marker,
 		.summary.close + * {
 			display: none;
 		}
 
 		.summary > h2 {
+			flex: 1 0 auto;
 			display: inline-block;
+			margin-right: 24px;
+			margin-right: 1.5rem;
 			height: 100%;
 			font-size: 1.5em;
 			line-height: 1;
 		}
 
 		.details-marker {
+			flex: 0 0 auto;
 			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			width: 1.5em;
-			height: 100%;
-			padding: .25em;
+			height: 1.5em;
+			padding: .5em;
 			border: 0;
 			border-radius: 50%;
-			color: #fff;
 			background-color: steelblue;
-			font-size: 1em;
-			line-height: 1;
+			line-height: 0;
 			transform: rotate(0deg);
 			transition: all .3s ease-in-out;
 		}
@@ -79,8 +92,15 @@
 			transform: rotate(180deg);
 		}
 
+		.details-marker > svg {
+			width: 100%;
+			height: 100%;
+			fill: #FFF;
+		}
+
 		.person p {
-			padding: 1.5em;
+			padding: 24px;
+			padding: 1.5rem;
 			line-height: 1.4;
 		}
 
@@ -94,9 +114,11 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Koop Reynders</h2>
-				<span class="details-marker" aria-label="details-marker">
-					&vee;
-				</span>
+				<div class="details-marker" aria-label="details-marker">
+					<svg viewBox="0 0 306 306">
+						<polygon points="306,94.3 270.3,58.6 153,175.9 35.7,58.6 0,94.3 153,247.4"/>
+					</svg>
+				</div>
 			</summary>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
@@ -106,9 +128,11 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Krijn Hoetmer</h2>
-				<button class="details-marker" type="button" aria-label="details-marker">
-					&vee;
-				</button>
+				<div class="details-marker" aria-label="details-marker">
+					<svg viewBox="0 0 306 306">
+						<polygon points="306,94.3 270.3,58.6 153,175.9 35.7,58.6 0,94.3 153,247.4"/>
+					</svg>
+				</div>
 			</summary>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
@@ -118,9 +142,11 @@
 		<details class="person">
 			<summary class="summary">
 				<h2>Joost Faber</h2>
-				<button class="details-marker" type="button" aria-label="details-marker">
-					&vee;
-				</button>
+				<div class="details-marker" aria-label="details-marker">
+					<svg viewBox="0 0 306 306">
+						<polygon points="306,94.3 270.3,58.6 153,175.9 35.7,58.6 0,94.3 153,247.4"/>
+					</svg>
+				</div>
 			</summary>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi officia, nisi quibusdam tempora, qui ut aliquid quos dolorum exercitationem, quisquam labore veniam officiis laboriosam. Quod rem perspiciatis expedita aspernatur.
