@@ -43,13 +43,15 @@
 			left: 0;
 			display: block;
 			display: flex;
+			flex-direction: column;
 			width: 100%;
 			-o-transition: all 1s ease-in-out;
 			-moz-transition: all 1s ease-in-out;
 			-webkit-transition: all 1s ease-in-out;
 			transition: all 1s ease-in-out;
 		}
-		.carrousel.inline .carrousel--container {
+		.carrousel--container.inline {
+			flex-direction: row;
 			width: 400%;
 		}
 
@@ -60,7 +62,7 @@
 			margin: 24px auto;
 			margin: 1.5rem auto;
 		}
-		.carrousel.inline li {
+		.carrousel--container.inline li {
 			width: 25%;
 		}
 
@@ -86,7 +88,7 @@
 			color: #FFF;
 			background-color: #1C1C1C;
 		}
-		button.inline {
+		button.show {
 			display: block;
 		}
 
@@ -147,70 +149,104 @@
 
 	<script type="text/javascript">
 
-		// If JS is enabled AND
-		// If setInterval() is supported:
+		// If JS is enabled:
 
-		if (window.setInterval !== undefined) {
-			console.log('does exist');
+		'use strict';
 
-			var carrousel = document.getElementsByClassName('carrousel')[0];
-			var prevBtn = document.getElementsByClassName('prev-btn')[0];
-			var nextBtn = document.getElementsByClassName('next-btn')[0];
+		(function () {
+			var carrousel = {
+				container: function () {
+					if (document.querySelector('.carrousel--container') !== undefined) {
+						return document.querySelector('.carrousel--container');
+					} else {
+						var all = document.getElementsByTagName('*');
+						for (var i = 0; i < all.length; i++) {
+							if (all[i].className.indexOf('carrousel--container') !== -1) {
+								return all[i];
+							}
+						}
+					}
+				},
+				slide: function () { return this.container().children; },
+				prevBtn: function () {
+					if (document.querySelector('.prev-btn') !== undefined) {
+						return document.querySelector('.prev-btn');
+					} else {
+						var all = document.getElementsByTagName('*');
+						for (var i = 0; i < all.length; i++) {
+							if (all[i].className.indexOf('prev-btn') !== -1) {
+								return all[i];
+							}
+						}
+					}
+				},
+				nextBtn: function () {
+					if (document.querySelector('.next-btn') !== undefined) {
+						return document.querySelector('.next-btn');
+					} else {
+						var all = document.getElementsByTagName('*');
+						for (var i = 0; i < all.length; i++) {
+							if (all[i].className.indexOf('next-btn') !== -1) {
+								return all[i];
+							}
+						}
+					}
+				},
+				init: function () {
+					var idx = 0;
+					var self = this;
 
-			// Make the carrousel inline:
-			carrousel.className += ' inline';
-			prevBtn.className += ' inline';
-			nextBtn.className += ' inline';
+					// Making the slider inline:
+					this.container().className += ' inline';
 
-			function slider() {
+					// Start the slider:
+					this.start(idx);
 
-				var carrouselContainer = document.getElementsByClassName('carrousel--container')[0];
-				var slide = carrouselContainer.children;
+					// Go to the next slide every 5 seconds:
+					setInterval(function () {
+						if (idx === self.slide().length - 1) {
+							idx = 0;
+						} else {
+							idx++;
+						}
+						self.start(idx);
+					}, 5000);
 
-				var idx = 0;
+					// Feature decect on event listeners:
+					if (document.addEventListener) {
+						this.prevBtn().className += ' show';
+						this.nextBtn().className += ' show';
 
-				function start(idx) {
-					carrouselContainer.style.left = (idx * -100) + '%';
+						// Go to previous slide when clicking on prevBtn:
+						this.prevBtn().addEventListener('click', function (e) {
+							if (idx === 0) {
+								idx = self.slide().length -1;
+							} else {
+								idx--;
+							}
+							self.start(idx);
+							e.preventDefault();
+						}, false);
+
+						// Go to next slide when clicking on nextBtn:
+						this.nextBtn().addEventListener('click', function (e) {
+							if (idx === self.slide().length - 1) {
+								idx = 0;
+							} else {
+								idx++;
+							}
+							self.start(idx);
+							e.preventDefault();
+						}, false);
+					}
+				},
+				start: function (idx) {
+					this.container().style.left = (idx * -100) + '%';
 				}
-				start(idx);
+			};
 
-				setInterval(function () {
-
-					if (idx === slide.length - 1) {
-						idx = 0;
-					} else {
-						idx++;
-					}
-					start(idx);
-
-				}, 5000)
-
-				prevBtn.addEventListener('click', function (e) {
-					if (idx === 0) {
-						idx = slide.length -1;
-					} else {
-						idx--;
-					}
-					start(idx);
-					e.preventDefault();
-				}, false);
-
-				nextBtn.addEventListener('click', function (e) {
-					if (idx === slide.length - 1) {
-						idx = 0;
-					} else {
-						idx++;
-					}
-					start(idx);
-					e.preventDefault();
-				}, false);
-
-			}
-			slider();
-
-		} else {
-			console.log('does not exist');
-		}
+			carrousel.init();
+		}) ();
 
 	</script>
 </body>
