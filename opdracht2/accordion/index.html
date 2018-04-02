@@ -57,8 +57,7 @@
 			padding: 1.5rem;
 			cursor: pointer;
 		}
-		.summary::-webkit-details-marker,
-		.summary.close + * {
+		.summary::-webkit-details-marker {
 			display: none;
 		}
 
@@ -85,11 +84,25 @@
 			border-radius: 50%;
 			background-color: steelblue;
 			line-height: 0;
+			-o-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			-moz-transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);
 			transform: rotate(0deg);
+			-o-transition: all .3s ease-in-out;
+			-moz-transition: all .3s ease-in-out;
+			-webkit-transition: all .3s ease-in-out;
 			transition: all .3s ease-in-out;
 		}
 		.details-marker.open {
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-webkit-transform: rotate(180deg);
 			transform: rotate(180deg);
+		}
+		.details-marker.hidden {
+			display: none;
 		}
 
 		.details-marker > svg {
@@ -102,6 +115,9 @@
 			padding: 24px;
 			padding: 1.5rem;
 			line-height: 1.4;
+		}
+		.person p.close {
+			display: none;
 		}
 
 	</style>
@@ -159,68 +175,70 @@
 		// Fallback for details tags:
 		// Replace functionality with custom one build with javascript
 
-		var person = document.getElementsByClassName('person');
-		var summary = document.getElementsByClassName('summary');
-
-		if (document.createElement('details').open === undefined) {
-			console.log('does not support');
-
-			var accordion = {
-				person: person,
-				summary: summary,
-				init: function () {
-					for (var i = 0; i < this.summary.length; i++) {
-						this.summary[i].className += ' close';
+		var summary = function () {
+			if (document.querySelectorAll('.summary') !== undefined) {
+				return document.querySelectorAll('.summary');
+			} else {
+				var arr = [];
+				var all = document.getElementsByTagName('*');
+				for (var i = 0; i < all.length; i++) {
+					if (all[i].className.indexOf('summary') !== -1) {
+						arr.push(all[i]);
 					}
-				},
-				openAccordion: function (summary) {
-					summary.className = summary.className.slice(0, summary.className.indexOf(' close'));
-				},
-				closeAccordion: function (summary) {
-					summary.className += ' close';
 				}
-			};
-
-			accordion.init();
-
-			for (var i = 0; i < accordion.summary.length; i++) {
-				accordion.summary[i].addEventListener('click', function () {
-					if (this.className.indexOf('close') !== -1) {
-						accordion.openAccordion(this);
-					} else {
-						accordion.closeAccordion(this);
-					}
-				}, false);
+				return arr;
 			}
 		}
 
-		// Fallback for when CSS transform property is not supported:
-		for (var i = 0; i < summary.length; i++) {
-			summary[i].addEventListener('click', function () {
-
-				var button = this.getElementsByTagName('button')[0];
-
-				if (window.getComputedStyle(button).getPropertyValue('transform') === undefined) {
-					console.log('does not exist');
-
-					if (button.innerHTML === '&vee;') {
-						button.innerHTML = '&wedge;';
-					} else {
-						button.innerHTML = '&vee;';
+		if (document.createElement('details').open === undefined) {
+			if (document.addEventListener) {
+				var accordion = {
+					summary: summary,
+					init: function () {
+						for (var i = 0; i < this.summary().length; i++) {
+							this.summary()[i].nextElementSibling.className = 'close';
+						}
+					},
+					openAccordion: function (summary) {
+						summary.nextElementSibling.className = '';
+					},
+					closeAccordion: function (summary) {
+						summary.nextElementSibling.className = 'close';
 					}
+				};
 
-				} else {
-					console.log('does exist');
+				accordion.init();
 
-					if (button.classList.contains('open')) {
-						button.classList.remove('open');
-					} else {
-						button.classList.add('open');
-					}
-
+				for (var i = 0; i < accordion.summary().length; i++) {
+					accordion.summary()[i].addEventListener('click', function () {
+						if (this.nextElementSibling.className.indexOf('close') !== -1) {
+							accordion.openAccordion(this);
+						} else {
+							accordion.closeAccordion(this);
+						}
+					}, false);
 				}
+			} else {
+				for (var i = 0; i < summary().length; i++) {
+					summary()[i].children[1].className += ' hidden';
+				}
+			}
+		}
 
-			}, false);
+		if (document.addEventListener) {
+			// Fallback for when CSS transform property is not supported:
+			for (var i = 0; i < summary().length; i++) {
+				summary()[i].addEventListener('click', function () {
+					var detailsMarker = this.getElementsByTagName('div')[0];
+					if (window.getComputedStyle(detailsMarker).getPropertyValue('transform') !== undefined) {
+						if (detailsMarker.className.indexOf('open') === -1) {
+							detailsMarker.className += ' open';
+						} else {
+							detailsMarker.className = detailsMarker.className.slice(0, detailsMarker.className.indexOf(' open'));
+						}
+					}
+				}, false);
+			}
 		}
 
 	</script>
