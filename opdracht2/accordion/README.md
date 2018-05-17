@@ -6,7 +6,13 @@
 
 Een accordion, via Progressive Enhancement opgebouwt.
 
-<!-- Brief description of the project. What is it about? -->
+## Feedback
+
+| Feedback | Verbetering |
+| -------- | ----------- |
+| Feature detect toevoegen | |
+| Geneste interactieve element | |
+| README schrijven | |
 
 ## Core functionaliteit
 
