@@ -12,11 +12,23 @@ Om te testen hoe een website er uit ziet met afbeeldingen uitgeschakeld, heb ik 
 
 Wanneer je afbeeldingen ‘uitzet’ op browsers, heb ik gemerkt dat er bij de meeste websites die ik gebruik niet veel verandert. Uiteraard kan je de afbeeldingen niet meer zien, wat de websites visueel minder aantrekkelijk maakt en het moeilijker maakt om te begrijpen waarvoor een afbeelding is bedoeld. Ik heb gemerkt dat het bijvoorbeeld moeilijker is om te weten waar een YouTube video of Netflix serie over gaat wanneer je geen thumbnail kan zien.
 
+<img src="screenshots/feature-afbeeldingen/youtube-001.png" alt="YouTube homepage zonder afbeeldingen" style="float:left;width:50%;">
+
+<img src="screenshots/feature-afbeeldingen/netflix.png" alt="Netflix homepage zonder afbeeldingen" style="float:left;width:50%;">
+
 Maar ondanks dit zijn deze websites nog steeds goed te volgen aangezien er naast de afbeelding ook een titel staat die aangeeft waar de afbeelding voor staat en anders wordt dit aangegeven met de alt attribute die naar voren komt wanneer de afbeelding niet geladen wordt.
 
 Wat me extra opviel bij YouTube was dat sommige iconen (en verrassend genoeg ook het logo) geen afbeeldingen waren, maar SVG elementen. Maar andere iconen waren wel afbeeldingen en dus niet zichtbaar. De iconen die voor belangrijke functies staan, zoals uploaden, like en delen zijn wel SVG, wat dus betekend dat je YouTube goed kan gebruiken zonder afbeeldingen.
 
+<img src="screenshots/feature-afbeeldingen/youtube-002.png" alt="YouTube iconen" style="width:50%;">
+
+<img src="screenshots/feature-afbeeldingen/youtube-003.png" alt="YouTube like, dislike en delen iconen" style="width:50%;">
+
+<img src="screenshots/feature-afbeeldingen/youtube-004.png" alt="YouTube inloggen en uploaden iconen" style="width:50%;">
+
 Een website die het minder goed deed was tot mijn verbazing Google Maps. Met afbeeldingen uit werd de map nooit echt goed geladen. Dit verbaast me, aangezien ik had verwacht dat de map niet was opgebouwd uit afbeeldingen. Maar er gaat toch iets mis.
+
+<img src="screenshots/feature-afbeeldingen/google-maps.png" alt="Google Maps zonder afbeeldingen" style="width:100%;">
 
 ### Hoe kan je dit fixen?
 ---
@@ -36,9 +48,15 @@ Ik heb de applicatie Sim Daltonism gebruikt om te kijken hoe de kleuren op websi
 ### Sites met problemen
 ---
 
+<img src="screenshots/feature-kleur/moodle-002.png" alt="Moodle website kleuren" style="width:100%;">
+
 Iets wat mij direct opviel was de Moodle website, waar blauw gekleurde links op een blauw gekleurde achtergrond staan. Dit zorgt voor een laag contrast, waardoor de links minder opvallen dan dat links horen te doen.
 
+<img src="screenshots/feature-kleur/premier-league.png" alt="Premier League tabel kleuren" style="width:100%;">
+
 Een ander goed voorbeeld zijn de groen en rode kleuren om aan te geven dat iets positief of negatief is, zoals in het voorbeeld van de voetbaluitslagen op de Premier League website, waarbij groen voor winst en rood voor verlies staat. Voor mensen met kleurenblindheid valt dit minder goed te zien. Nu wordt het in dit voorbeeld nog wel extra aangegeven met de W van win en L van lose.
+
+<img src="screenshots/feature-kleur/information-design-project1-003.png" alt="Information Design Project 1 Kleuren" style="width:100%;">
 
 Het beste voorbeeld is echter van mijn eigen werk. Voor het project Information Design heb ik een pie chart gemaakt die kleur gecodeerd is. Met dit filter zie je pas hoe slecht je de kleuren uit elkaar kan halen.
 
