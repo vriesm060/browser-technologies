@@ -12,9 +12,8 @@ Om te testen hoe een website er uit ziet met afbeeldingen uitgeschakeld, heb ik 
 
 Wanneer je afbeeldingen ‘uitzet’ op browsers, heb ik gemerkt dat er bij de meeste websites die ik gebruik niet veel verandert. Uiteraard kan je de afbeeldingen niet meer zien, wat de websites visueel minder aantrekkelijk maakt en het moeilijker maakt om te begrijpen waarvoor een afbeelding is bedoeld. Ik heb gemerkt dat het bijvoorbeeld moeilijker is om te weten waar een YouTube video of Netflix serie over gaat wanneer je geen thumbnail kan zien.
 
-<!-- <img src="screenshots/feature-afbeeldingen/youtube-001.png" alt="YouTube homepage zonder afbeeldingen" width="50%">
-
-<img src="screenshots/feature-afbeeldingen/netflix.png" alt="Netflix homepage zonder afbeeldingen" width="50%"> -->
+<img src="screenshots/feature-afbeeldingen/youtube-001.png" alt="YouTube homepage zonder afbeeldingen" width="50%">
+<img src="screenshots/feature-afbeeldingen/netflix.png" alt="Netflix homepage zonder afbeeldingen" width="50%">
 
 ![](screenshots/feature-afbeeldingen/youtube-001.png) ![](screenshots/feature-afbeeldingen/netflix.png)
 
