@@ -60,7 +60,11 @@ setInterval(function () {
 }, 5000);
 ```
 
-Wanneer er geen `document.addEventListener` ondersteund wordt valt de functionaliteit van de carrousel weg en worden de slides onder elkaar getoond als een lijst.
+Wanneer er geen `document.addEventListener` ondersteund wordt valt de functionaliteit van de carrousel weg en worden de slides onder elkaar getoond als een lijst. Dit gebeurt ook wanneer er helemaal geen Javascript is.
+
+![Carrousel zonder Javascript](screenshots/no-js.png)
+
+*De carrousel zonder Javascript wordt een lijst*
 
 ## Browser ondersteuning
 
@@ -122,3 +126,7 @@ if (document.addEventListener) {
   this.container().className = '';
 }
 ```
+
+![Test op IE8](screenshots/ie8.png)
+
+*Onder andere op IE8 valt de carrousel terug tot een lijst*
