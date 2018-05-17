@@ -11,8 +11,8 @@ Een carrousel, via Progressive Enhancement opgebouwt.
 | Feedback | Verbetering |
 | -------- | ----------- |
 | Test IE8 | Done |
-| README toevoegen | |
-| Test toevoegen | |
+| README toevoegen | Done |
+| Test toevoegen | Done |
 
 ## Core functionaliteit
 
