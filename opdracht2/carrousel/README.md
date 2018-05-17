@@ -10,7 +10,7 @@ Een carrousel, via Progressive Enhancement opgebouwt.
 
 | Feedback | Verbetering |
 | -------- | ----------- |
-| Test IE8 | |
+| Test IE8 | Done |
 | README toevoegen | |
 | Test toevoegen | |
 
