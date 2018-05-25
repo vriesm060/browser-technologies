@@ -10,9 +10,9 @@ Een carrousel, via Progressive Enhancement opgebouwt.
 
 | Feedback | Verbetering |
 | -------- | ----------- |
-| Test IE8 | Done |
-| README toevoegen | Done |
-| Test toevoegen | Done |
+| Test IE8 | [Gedaan](#document.addEventListener) |
+| README toevoegen | Gedaan |
+| Test toevoegen | [Gedaan](#document.addEventListener) |
 
 ## Core functionaliteit
 
