@@ -111,5 +111,16 @@ Om de accessibility te testen heb ik [Funkify](http://www.funkify.org/) gebruikt
 
 Drag & Drop wordt door maar 50% van de browsers ondersteund, maar de core functionaliteit wordt door bijna alle browsers ondersteund. Alleen op browsers die geen HTML5 elementen ondersteunen, IE6, IE7, IE8 en Firefox 2, ziet de app er minder goed uit. Dit komt doordat het grootste gedeelte van de styling dan niet gevonden wordt. Ondanks dit is de belangrijkste informatie nog wel beschikbaar.
 
-<img src="screenshots/ie8-preview.png" alt="IE8 preview" width="800px">  
+<img src="screenshots/ie8-preview.png" alt="IE8 preview" width="800px">
 *De app op IE8*
+
+#### Testen bij het Device lab
+---
+
+![Device Lab testen](screenshots/device-lab.jpg)
+
+Een van de dingen die uit de test bij het Device Lab naar voren kwam, was dat op één van de devices het `input` veld een standaard achtergrond mee kreeg, die van de browser afkomstig was. Nadat ik in de CSS `background-color: transparent;` aan de `input` had toegevoegd, verdween deze standaard stijl weer. 
+
+| **Before:** | **After:** |
+|-------------|------------|
+| ![](screenshots/001-before.jpg) | ![](screenshots/001-after.jpg) |
