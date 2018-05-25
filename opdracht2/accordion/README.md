@@ -10,9 +10,9 @@ Een accordion, via Progressive Enhancement opgebouwt.
 
 | Feedback | Verbetering |
 | -------- | ----------- |
-| Feature detect toevoegen | Done |
-| Geneste interactieve element | Done |
-| README schrijven | Done |
+| Feature detect toevoegen | [Gedaan](#browser-ondersteuning) |
+| Geneste interactieve element | [Gedaan](#core-functionaliteit) |
+| README schrijven | Gedaan |
 
 ## Core functionaliteit
 
